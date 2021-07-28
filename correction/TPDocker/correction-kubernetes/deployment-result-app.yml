@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result-app
+  namespace: global-vote-app
+spec:
+  # replicas: 1
+  selector:
+    matchLabels:
+      app: result-app
+  template:
+    metadata:
+      labels:
+        app: result-app
+    spec:
+      containers:
+      - name: result-app
+        image: result-app
+        imagePullPolicy: "IfNotPresent"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 4000
