@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvcdb
+  namespace: appvote
+spec:
+  storageClassName: slow
+  selector:
+    matchLabels:
+      storage: good-one
+  resources:
+    requests:
+      storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
